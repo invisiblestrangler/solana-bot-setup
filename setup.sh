@@ -3,10 +3,10 @@
 # This script performs system updates, clones a Git repository,
 # and installs Node.js along with npm, then displays their versions.
 
-# Ensuring the script is run as root
-if [ "$(id -u)" -ne 0 ]; then
-    echo "This script must be run as root." 1>&2
-    exit 1
+# Check if the script is being run as root, if not, exit with an error
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root" 
+   exit 1
 fi
 
 # Update package lists
@@ -19,7 +19,7 @@ git clone https://github.com/invisiblestrangler/solana-trading-bot
 
 # Install Node.js
 echo "Installing Node.js..."
-sudo apt install -y nodejs
+sudo apt-get install -y nodejs
 
 # Display the version of Node.js
 echo "The installed version of Node.js is:"
@@ -27,7 +27,7 @@ node -v
 
 # Install npm
 echo "Installing npm..."
-sudo apt install -y npm
+sudo apt-get install -y npm
 
 # Display the version of npm
 echo "The installed version of npm is:"
