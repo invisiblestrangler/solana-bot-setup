@@ -46,5 +46,6 @@ nvm use --lts
 
 echo "Installing npm packages required by the trading bot..."
 npm install
+npm i @metaplex-foundation/umi-serializers
 
 echo "Setup completed successfully."
